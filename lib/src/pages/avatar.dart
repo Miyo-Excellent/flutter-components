@@ -9,7 +9,7 @@ class AvatarPage extends StatelessWidget {
       ),
       body: Container(
         child: Center(
-          child: Text('Body'),
+          child: Text('Avatar Page'),
         ),
       ),
     );

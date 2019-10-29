@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
-//  import 'package:flutter_components/src/pages/alert.dart';
-//  import 'package:flutter_components/src/pages/avatar.dart';
 import 'package:flutter_components/src/providers/menu_providers.dart';
 import 'package:flutter_components/src/utils/get_icon_by_string.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-//      print(menuProvider.options);
-//
-//    menuProvider.getData().then((options) {
-//      print('_List');
-//      print(options);
-//    });
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Components'),
