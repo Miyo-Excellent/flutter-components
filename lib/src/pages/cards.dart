@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_components/widgets/BigCard.dart';
 
 class CardsPage extends StatelessWidget {
   final List<Map<String, String>> _cards = <Map<String, String>>[
@@ -38,90 +39,17 @@ class CardsPage extends StatelessWidget {
       ),
       body: ListView(
         padding: EdgeInsets.all(5),
-        children: _cardType0(),
+        children: _bigCards(),
       ),
     );
   }
 
-  List<Card> _cardType0() => _cards
-      .map((card) => Card(
-          clipBehavior: Clip.antiAlias,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.5)),
-          elevation: 2.5,
-          child: Container(
-              decoration: BoxDecoration(
-                color: const Color.fromRGBO(228, 240, 240, 1.0),
-              ),
-            //  padding: EdgeInsets.all(10.0),
-            child: Column(
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    FadeInImage(
-                      image: NetworkImage(card['url']),
-                      placeholder: AssetImage('assets/AGNB.gif'),
-                      fadeInDuration: Duration(milliseconds: 200),
-                      fit: BoxFit.cover,
-                      height: 275.0,
-                    ),
-                    SizedBox(height: 20.0,),
-                    ListTile(
-                      leading: Icon(Icons.threed_rotation),
-                      title: Text(card['title'], style: TextStyle(color: Color.fromRGBO(120, 120, 120, 1.0)),),
-                      subtitle: Text(card['text'], style: TextStyle(color: Color.fromRGBO(120, 120, 120, 1.0)),),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 20.0, bottom: 10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          FlatButton(
-                            splashColor: Colors.redAccent,
-                            child: Text('Cancel',
-                                style: TextStyle(color: Colors.redAccent)),
-                            onPressed: () {},
-                          ),
-                          SizedBox(width: 10.0),
-                          FlatButton(
-                            splashColor: Colors.blueAccent,
-                            child: Text('More',
-                                style: TextStyle(color: Colors.blueAccent)),
-                            onPressed: () {},
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                )
-              ],
-            )
-          )))
-      .toList();
-
-  List<Card> _cardType1() => _cards
-      .map((card) => Card(
-          clipBehavior: Clip.antiAlias,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.5)),
-          elevation: 2.5,
-          child: Container(
-            decoration: BoxDecoration(
-              color: const Color.fromRGBO(228, 240, 240, 1.0),
-            ),
-            child: Column(
-              children: <Widget>[
-                FadeInImage(
-                  image: NetworkImage(card['url']),
-                  placeholder: AssetImage('assets/AGNB.gif'),
-                  fadeInDuration: Duration(milliseconds: 200),
-                  fit: BoxFit.cover,
-                  height: 275.0,
-                ),
-                Container(
-                    padding: EdgeInsets.all(10.0), child: Text(card['text']))
-              ],
-            ),
-          )))
+  List<Widget> _bigCards() => _cards
+      .map((card) => BigCard(
+            title: card['title'],
+            imageUrl: card['url'],
+            placeholderUrl: 'assets/AGNB.gif',
+            text: card['text'],
+          ))
       .toList();
 }
